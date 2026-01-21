@@ -1,0 +1,84 @@
+import { Megaphone, Calendar, PartyPopper, Gamepad2 } from "lucide-react";
+
+const announcements = [
+  {
+    icon: PartyPopper,
+    title: "Welcome Event This Weekend!",
+    description: "Join us Saturday at 8PM EST for games, giveaways, and good vibes. Don't miss it!",
+    date: "2 hours ago",
+    type: "event"
+  },
+  {
+    icon: Gamepad2,
+    title: "New Gaming Channels Added",
+    description: "We've added dedicated channels for Valorant, Minecraft, and GTA. Check them out!",
+    date: "1 day ago",
+    type: "update"
+  },
+  {
+    icon: Megaphone,
+    title: "Mod Applications Open",
+    description: "Think you've got what it takes? Apply to become a moderator in #applications.",
+    date: "3 days ago",
+    type: "announcement"
+  }
+];
+
+const AnnouncementsSection = () => {
+  return (
+    <section className="py-20 md:py-28 relative">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="animate-slide-up opacity-0 text-4xl md:text-5xl font-black mb-4">
+            Latest <span className="text-gradient">Updates</span>
+          </h2>
+          <p className="animate-slide-up opacity-0 delay-100 text-muted-foreground text-lg max-w-2xl mx-auto">
+            Stay in the loop with what's happening in BJgang
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {announcements.map((announcement, index) => {
+            const Icon = announcement.icon;
+            return (
+              <div
+                key={index}
+                className="animate-slide-up opacity-0 group"
+                style={{ animationDelay: `${index * 100 + 200}ms` }}
+              >
+                <div className="relative bg-card/50 backdrop-blur-sm border border-white/5 rounded-2xl p-5 md:p-6 hover:border-primary/30 transition-all duration-300 overflow-hidden">
+                  {/* Gradient accent */}
+                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary via-discord-fuchsia to-primary" />
+                  
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="w-5 h-5 text-primary" />
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-start justify-between gap-4 mb-2">
+                        <h3 className="font-bold text-lg">{announcement.title}</h3>
+                        <span className="flex-shrink-0 flex items-center gap-1.5 text-xs text-muted-foreground">
+                          <Calendar className="w-3 h-3" />
+                          {announcement.date}
+                        </span>
+                      </div>
+                      <p className="text-muted-foreground">{announcement.description}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <p className="animate-slide-up opacity-0 delay-500 text-center text-muted-foreground mt-8">
+          Join the server to see all announcements and never miss an update!
+        </p>
+      </div>
+    </section>
+  );
+};
+
+export default AnnouncementsSection;

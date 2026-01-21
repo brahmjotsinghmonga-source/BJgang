@@ -1,0 +1,116 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Shield, HelpCircle } from "lucide-react";
+
+const rules = [
+  {
+    title: "Be Respectful",
+    content: "Treat all members with respect. No harassment, hate speech, or discrimination of any kind."
+  },
+  {
+    title: "No Spam or Self-Promotion",
+    content: "Avoid excessive messages, links, or self-promotion without permission from staff."
+  },
+  {
+    title: "Keep It Safe",
+    content: "No NSFW content, illegal activities, or sharing personal information of others."
+  },
+  {
+    title: "Follow Discord ToS",
+    content: "All Discord Terms of Service and Community Guidelines apply here."
+  },
+  {
+    title: "Listen to Staff",
+    content: "Moderators and admins have final say. If you have concerns, DM a staff member."
+  }
+];
+
+const faqs = [
+  {
+    question: "How do I get roles?",
+    answer: "Head to our #roles channel and react to the messages to claim your roles!"
+  },
+  {
+    question: "Can I invite my friends?",
+    answer: "Absolutely! Share the invite link and grow the gang together."
+  },
+  {
+    question: "How do I report someone?",
+    answer: "DM any online moderator or use the #report channel to flag issues."
+  },
+  {
+    question: "Are there voice channels?",
+    answer: "Yes! We have multiple voice channels for gaming, chilling, and more."
+  }
+];
+
+const RulesSection = () => {
+  return (
+    <section className="py-20 md:py-28 relative">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+          {/* Rules */}
+          <div className="animate-slide-up opacity-0">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-xl bg-discord-red/20">
+                <Shield className="w-6 h-6 text-discord-red" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black">Server Rules</h2>
+            </div>
+            <Accordion type="single" collapsible className="space-y-3">
+              {rules.map((rule, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`rule-${index}`}
+                  className="bg-card/50 backdrop-blur-sm border border-white/5 rounded-xl px-4 overflow-hidden"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-4">
+                    <span className="flex items-center gap-3">
+                      <span className="text-discord-blurple font-bold">#{index + 1}</span>
+                      {rule.title}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-4">
+                    {rule.content}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+
+          {/* FAQ */}
+          <div className="animate-slide-up opacity-0 delay-200">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="p-2 rounded-xl bg-discord-yellow/20">
+                <HelpCircle className="w-6 h-6 text-discord-yellow" />
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black">FAQ</h2>
+            </div>
+            <Accordion type="single" collapsible className="space-y-3">
+              {faqs.map((faq, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`faq-${index}`}
+                  className="bg-card/50 backdrop-blur-sm border border-white/5 rounded-xl px-4 overflow-hidden"
+                >
+                  <AccordionTrigger className="text-left font-semibold hover:no-underline py-4">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-4">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RulesSection;

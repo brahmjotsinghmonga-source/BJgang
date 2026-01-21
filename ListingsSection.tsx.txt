@@ -1,0 +1,83 @@
+import { ExternalLink } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+const listings = [
+  {
+    name: "Disboard",
+    description: "The most popular Discord server directory",
+    url: "https://disboard.org",
+    color: "#5865F2",
+    icon: "🌐"
+  },
+  {
+    name: "Top.gg",
+    description: "Major hub for servers and bots",
+    url: "https://top.gg",
+    color: "#FF3366",
+    icon: "🏆"
+  },
+  {
+    name: "Discord.me",
+    description: "Custom invite links and listing",
+    url: "https://discord.me",
+    color: "#00D166",
+    icon: "✨"
+  }
+];
+
+const ListingsSection = () => {
+  return (
+    <section className="py-20 md:py-28 relative bg-gradient-to-b from-transparent via-primary/5 to-transparent">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="animate-slide-up opacity-0 text-4xl md:text-5xl font-black mb-4">
+            Find Us <span className="text-gradient">Everywhere</span>
+          </h2>
+          <p className="animate-slide-up opacity-0 delay-100 text-muted-foreground text-lg max-w-2xl mx-auto">
+            BJgang is listed on major Discord directories. Vote for us to help us grow!
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-6">
+          {listings.map((listing, index) => (
+            <a
+              key={listing.name}
+              href={listing.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="animate-slide-up opacity-0 group"
+              style={{ animationDelay: `${index * 100 + 200}ms` }}
+            >
+              <div 
+                className="relative bg-card/60 backdrop-blur-sm border border-white/10 rounded-2xl p-6 min-w-[240px] hover:scale-105 transition-all duration-300 hover:border-white/20"
+                style={{ 
+                  boxShadow: `0 0 40px -15px ${listing.color}50`
+                }}
+              >
+                <div className="flex items-center gap-4 mb-3">
+                  <span className="text-3xl">{listing.icon}</span>
+                  <div>
+                    <h3 className="font-bold text-lg flex items-center gap-2">
+                      {listing.name}
+                      <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </h3>
+                    <p className="text-sm text-muted-foreground">{listing.description}</p>
+                  </div>
+                </div>
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
+                >
+                  Visit & Vote
+                </Button>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ListingsSection;

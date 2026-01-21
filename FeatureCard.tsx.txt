@@ -1,0 +1,32 @@
+import { ReactNode } from "react";
+
+interface FeatureCardProps {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  color: "blurple" | "green" | "fuchsia" | "yellow";
+  delay?: string;
+}
+
+const colorClasses = {
+  blurple: "bg-primary/20 text-primary",
+  green: "bg-discord-green/20 text-discord-green",
+  fuchsia: "bg-discord-fuchsia/20 text-discord-fuchsia",
+  yellow: "bg-discord-yellow/20 text-discord-yellow",
+};
+
+const FeatureCard = ({ icon, title, description, color, delay = "" }: FeatureCardProps) => {
+  return (
+    <div 
+      className={`animate-slide-up opacity-0 ${delay} group p-6 md:p-8 rounded-2xl bg-card border border-border card-shadow hover:border-primary/50 transition-all duration-300 hover:-translate-y-2`}
+    >
+      <div className={`inline-flex items-center justify-center w-14 h-14 rounded-xl ${colorClasses[color]} mb-5 group-hover:scale-110 transition-transform duration-300`}>
+        {icon}
+      </div>
+      <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
+      <p className="text-muted-foreground leading-relaxed">{description}</p>
+    </div>
+  );
+};
+
+export default FeatureCard;

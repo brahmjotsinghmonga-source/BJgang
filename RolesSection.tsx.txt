@@ -1,0 +1,139 @@
+import { Crown, Sword, Star, Sparkles, Users, Rocket, Code, Zap, Heart } from "lucide-react";
+
+const roles = [
+  {
+    name: "Owner",
+    color: "#FFD700",
+    icon: Crown,
+    description: "The big boss of BJgang",
+    members: 1
+  },
+  {
+    name: "Admin",
+    color: "#E91E63",
+    icon: Sword,
+    description: "Server administrators",
+    members: 1
+  },
+  {
+    name: "Moderator",
+    color: "#9C27B0",
+    icon: Star,
+    description: "Keeping the peace",
+    members: 3
+  },
+  {
+    name: "BJG-Staff Member",
+    color: "#2196F3",
+    icon: Users,
+    description: "Official staff team",
+    members: 4
+  },
+  {
+    name: "BJG-Coder",
+    color: "#00BCD4",
+    icon: Code,
+    description: "The tech wizards",
+    members: 3
+  },
+  {
+    name: "BJG-Server Booster",
+    color: "#FF69B4",
+    icon: Rocket,
+    description: "Supporting the server",
+    members: 2
+  },
+  {
+    name: "Seriously Brainrotted",
+    color: "#FF5722",
+    icon: Zap,
+    description: "Certified brainrot",
+    members: 1
+  },
+  {
+    name: "Cute",
+    color: "#FF9999",
+    icon: Heart,
+    description: "Officially adorable",
+    members: 2
+  },
+  {
+    name: "Member",
+    color: "#5865F2",
+    icon: Sparkles,
+    description: "Part of the squad",
+    members: "50+"
+  }
+];
+
+const RolesSection = () => {
+  return (
+    <section className="py-20 md:py-28 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="animate-slide-up opacity-0 text-4xl md:text-5xl font-black mb-4">
+            Roles & <span className="text-gradient">Hierarchy</span>
+          </h2>
+          <p className="animate-slide-up opacity-0 delay-100 text-muted-foreground text-lg max-w-2xl mx-auto">
+            Climb the ranks and unlock exclusive perks as you become an active member of the gang
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+          {roles.map((role, index) => {
+            const Icon = role.icon;
+            return (
+              <div
+                key={role.name}
+                className="animate-slide-up opacity-0 group relative"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div 
+                  className="relative bg-card/60 backdrop-blur-sm border border-white/10 rounded-2xl p-5 md:p-6 min-w-[160px] md:min-w-[180px] hover:scale-105 transition-all duration-300 hover:border-white/20"
+                  style={{ 
+                    boxShadow: `0 0 30px -10px ${role.color}40`
+                  }}
+                >
+                  {/* Role color indicator */}
+                  <div 
+                    className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 rounded-b-full"
+                    style={{ backgroundColor: role.color }}
+                  />
+                  
+                  <div className="flex flex-col items-center text-center">
+                    <div 
+                      className="p-3 rounded-xl mb-3"
+                      style={{ backgroundColor: `${role.color}20` }}
+                    >
+                      <Icon 
+                        className="w-6 h-6"
+                        style={{ color: role.color }}
+                      />
+                    </div>
+                    <h3 
+                      className="font-bold text-lg mb-1"
+                      style={{ color: role.color }}
+                    >
+                      {role.name}
+                    </h3>
+                    <p className="text-muted-foreground text-sm mb-2">
+                      {role.description}
+                    </p>
+                    <span className="text-xs text-muted-foreground/70">
+                      {role.members} {typeof role.members === 'number' && role.members === 1 ? 'member' : 'members'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default RolesSection;

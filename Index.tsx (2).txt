@@ -1,0 +1,27 @@
+import HeroSection from "@/components/HeroSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import RulesSection from "@/components/RulesSection";
+import RolesSection from "@/components/RolesSection";
+import StaffSection from "@/components/StaffSection";
+import AnnouncementsSection from "@/components/AnnouncementsSection";
+import ListingsSection from "@/components/ListingsSection";
+import CTASection from "@/components/CTASection";
+import Footer from "@/components/Footer";
+
+const Index = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      <HeroSection />
+      <FeaturesSection />
+      <RolesSection />
+      <StaffSection />
+      <RulesSection />
+      <AnnouncementsSection />
+      <ListingsSection />
+      <CTASection />
+      <Footer />
+    </div>
+  );
+};
+
+export default Index;

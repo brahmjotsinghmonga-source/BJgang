@@ -1,0 +1,39 @@
+import DiscordIcon from "./DiscordIcon";
+
+const INVITE_LINK = "https://discord.gg/WbMFKTXTt";
+
+const Footer = () => {
+  return (
+    <footer className="py-12 border-t border-border bg-card/50">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+              <span className="text-lg font-black text-gradient">BJ</span>
+            </div>
+            <span className="text-xl font-bold text-foreground">BJgang</span>
+          </div>
+
+          {/* Discord Link */}
+          <a 
+            href={INVITE_LINK} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
+          >
+            <DiscordIcon className="w-5 h-5" />
+            <span>discord.gg/WbMFKTXTt</span>
+          </a>
+
+          {/* Copyright */}
+          <p className="text-sm text-muted-foreground">
+            © 2025 BJgang. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

@@ -1,0 +1,46 @@
+import { Button } from "@/components/ui/button";
+import DiscordIcon from "./DiscordIcon";
+
+const INVITE_LINK = "https://discord.gg/WbMFKTXTt";
+
+const CTASection = () => {
+  return (
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+      
+      {/* Decorative blobs */}
+      <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-discord-fuchsia/10 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="animate-slide-up opacity-0 text-4xl md:text-6xl font-black mb-6">
+            Ready to Join the <span className="text-gradient">Gang</span>?
+          </h2>
+          
+          <p className="animate-slide-up opacity-0 delay-100 text-lg md:text-xl text-muted-foreground mb-10">
+            Don't miss out on the fun. Click the button below and become part of BJgang today. 
+            The squad is waiting for you!
+          </p>
+          
+          <div className="animate-slide-up opacity-0 delay-200">
+            <Button 
+              variant="discord" 
+              size="xl" 
+              asChild
+              className="group"
+            >
+              <a href={INVITE_LINK} target="_blank" rel="noopener noreferrer">
+                <DiscordIcon className="w-7 h-7 group-hover:animate-bounce" />
+                Join BJgang Now
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default CTASection;

@@ -1,0 +1,75 @@
+import { Gamepad2, Users, MessageCircle, Zap, Trophy, Heart } from "lucide-react";
+import FeatureCard from "./FeatureCard";
+
+const features = [
+  {
+    icon: <Gamepad2 className="w-7 h-7" />,
+    title: "Gaming Sessions",
+    description: "Join epic gaming sessions with the crew. From competitive matches to chill gameplay, we've got it all.",
+    color: "blurple" as const,
+  },
+  {
+    icon: <Users className="w-7 h-7" />,
+    title: "Active Community",
+    description: "A welcoming community that's always online. Make new friends and build lasting connections.",
+    color: "green" as const,
+  },
+  {
+    icon: <MessageCircle className="w-7 h-7" />,
+    title: "Voice & Text Channels",
+    description: "Multiple channels for every topic. Whether you want to chat, share memes, or strategize.",
+    color: "fuchsia" as const,
+  },
+  {
+    icon: <Zap className="w-7 h-7" />,
+    title: "Events & Tournaments",
+    description: "Regular events, game nights, and tournaments with awesome rewards for winners.",
+    color: "yellow" as const,
+  },
+  {
+    icon: <Trophy className="w-7 h-7" />,
+    title: "Exclusive Roles",
+    description: "Level up and earn exclusive roles. Show off your dedication to the gang.",
+    color: "blurple" as const,
+  },
+  {
+    icon: <Heart className="w-7 h-7" />,
+    title: "No Toxicity",
+    description: "A friendly environment where everyone is respected. Just good vibes and great times.",
+    color: "green" as const,
+  },
+];
+
+const FeaturesSection = () => {
+  return (
+    <section id="features" className="py-24 md:py-32 bg-background relative">
+      {/* Subtle top gradient */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background to-transparent" />
+      
+      <div className="container mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="animate-slide-up opacity-0 text-4xl md:text-5xl font-black mb-4">
+            Why Join <span className="text-gradient">BJgang</span>?
+          </h2>
+          <p className="animate-slide-up opacity-0 delay-100 text-lg text-muted-foreground max-w-xl mx-auto">
+            We're more than just a server. We're a family of gamers and friends.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => (
+            <FeatureCard
+              key={feature.title}
+              {...feature}
+              delay={`delay-${(index + 1) * 100}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default FeaturesSection;
